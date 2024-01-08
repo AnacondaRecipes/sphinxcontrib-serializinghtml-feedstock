@@ -30,6 +30,7 @@ test:
     - pip
   commands:
     - pip check
+    - pytest --pyargs sphinxcontrib.serializinghtml -v
 
 about:
   home: https://www.sphinx-doc.org/
