@@ -34,12 +34,15 @@ test:
     - pip check
 
 about:
-  home: http://sphinx-doc.org/
+  home: https://www.sphinx-doc.org/
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
   summary: sphinxcontrib-serializinghtml is a sphinx extension which outputs "serialized" HTML files (json and pickle).
   dev_url: https://github.com/sphinx-doc/sphinxcontrib-serializinghtml
+  doc_url: https://www.sphinx-doc.org/
+  description: |
+    sphinxcontrib-serializinghtml is a sphinx extension which outputs "serialized" HTML files (json and pickle).
 
 extra:
   recipe-maintainers:
