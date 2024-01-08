@@ -28,6 +28,7 @@ test:
     - sphinxcontrib.serializinghtml
   requires:
     - pip
+    - pytest
   commands:
     - pip check
     - pytest --pyargs sphinxcontrib.serializinghtml -v
