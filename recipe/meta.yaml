@@ -15,22 +15,26 @@ build:
 
 requirements:
   host:
-    - python >=3.5
+    - python
     - pip
+    - setuptools
+    - wheel
+    - flit-core
   run:
-    - python >=3.5
+    - python
+    - sphinx >=5
 
 test:
+  imports:
+    - sphinxcontrib
+    - sphinxcontrib.serializinghtml
   requires:
     - pip
     # This is a circular dependency b/c sphinx depends on this package now :-/
     - sphinx
   commands:
     # pip check incorrectly shows dependencies for sphinx 4.0.1
-    #- pip check
-  imports:
-    - sphinxcontrib
-    - sphinxcontrib.serializinghtml
+    - pip check
 
 about:
   home: http://sphinx-doc.org/
