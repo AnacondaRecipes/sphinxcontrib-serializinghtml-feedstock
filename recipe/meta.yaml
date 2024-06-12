@@ -1,44 +1,51 @@
-{% set version = "1.1.5" %}
+{% set version = "1.1.10" %}
 
 package:
   name: sphinxcontrib-serializinghtml
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/s/sphinxcontrib-serializinghtml/sphinxcontrib-serializinghtml-{{ version }}.tar.gz
-  sha256: aa5f6de5dfdf809ef505c4895e51ef5c9eac17d0f287933eb49ec495280b6952
+  url: https://pypi.io/packages/source/s/sphinxcontrib-serializinghtml/sphinxcontrib_serializinghtml-{{ version }}.tar.gz
+  sha256: 93f3f5dc458b91b192fe10c397e324f262cf163d79f3282c158e8436a2c4511f
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  skip: True  # [py<39]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
-    - python >=3.5
+    - python
     - pip
+    - flit-core >=3.7
   run:
-    - python >=3.5
+    - python
 
 test:
-  requires:
-    - pip
-    # This is a circular dependency b/c sphinx depends on this package now :-/
-    - sphinx
-  commands:
-    # pip check incorrectly shows dependencies for sphinx 4.0.1
-    #- pip check
   imports:
     - sphinxcontrib
     - sphinxcontrib.serializinghtml
+  source_files:
+    - tests
+  requires:
+    - pip
+    - pytest
+    - sphinx >=5
+  commands:
+    - pip check
+    - pytest -v
+
 
 about:
-  home: http://sphinx-doc.org/
+  home: https://www.sphinx-doc.org/
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
   summary: sphinxcontrib-serializinghtml is a sphinx extension which outputs "serialized" HTML files (json and pickle).
+  description: |
+    sphinxcontrib-serializinghtml is a sphinx extension which outputs "serialized" HTML files (json and pickle).
   dev_url: https://github.com/sphinx-doc/sphinxcontrib-serializinghtml
+  doc_url: https://github.com/sphinx-doc/sphinxcontrib-serializinghtml
 
 extra:
   recipe-maintainers:
