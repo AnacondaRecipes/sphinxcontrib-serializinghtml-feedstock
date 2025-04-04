@@ -1,4 +1,4 @@
-{% set version = "1.1.10" %}
+{% set version = "2.0.0" %}
 
 package:
   name: sphinxcontrib-serializinghtml
@@ -6,20 +6,20 @@ package:
 
 source:
   url: https://pypi.io/packages/source/s/sphinxcontrib-serializinghtml/sphinxcontrib_serializinghtml-{{ version }}.tar.gz
-  sha256: 93f3f5dc458b91b192fe10c397e324f262cf163d79f3282c158e8436a2c4511f
+  sha256: e9d912827f872c029017a53f0ef2180b327c3f7fd23c87229f7a8e8b70031d4d
 
 build:
   number: 0
-  skip: True  # [py<39]
+  noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
-    - python
+    - python >=3.9
     - pip
     - flit-core >=3.7
   run:
-    - python
+    - python >=3.9
 
 test:
   imports:
