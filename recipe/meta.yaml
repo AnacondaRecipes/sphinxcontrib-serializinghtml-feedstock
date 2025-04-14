@@ -20,6 +20,7 @@ requirements:
     - flit-core >=3.7
   run:
     - python >=3.9
+    - sphinx >=5
 
 test:
   imports:
@@ -30,7 +31,7 @@ test:
   requires:
     - pip
     - pytest
-    - sphinx >=5
+    - defusedxml
   commands:
     - pip check
     - pytest -v
